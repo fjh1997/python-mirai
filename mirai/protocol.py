@@ -348,7 +348,7 @@ class MiraiProtocol:
                 "sessionKey": self.session_key,
                 "target": self.handleTargetAsGroup(group),
                 "memberId": self.handleTargetAsMember(member),
-                "info": json.loads(setting.json())
+                "info": json.loads(setting.json(by_alias=True))
             }
         ), raise_exception=True)
 
@@ -374,7 +374,7 @@ class MiraiProtocol:
             await fetch.http_post(f"{self.baseurl}/groupConfig", {
                 "sessionKey": self.session_key,
                 "target": self.handleTargetAsGroup(group),
-                "config": json.loads(config.json())
+                "config": json.loads(config.json(by_alias=True))
             }
         ), raise_exception=True)
 
@@ -497,9 +497,9 @@ class MiraiProtocol:
             str
         ]):
         if isinstance(message, MessageChain):
-            return json.loads(message.json())
+            return json.loads(message.json(by_alias=True))
         elif isinstance(message, BaseMessageComponent):
-            return [json.loads(message.json())]
+            return [json.loads(message.json(by_alias=True))]
         elif isinstance(message, (tuple, list)):
             result = []
             for i in message:
@@ -519,10 +519,10 @@ class MiraiProtocol:
                         "imageId": i.asGroupImage()
                     })
                 else:
-                    result.append(json.loads(i.json()))
+                    result.append(json.loads(i.json(by_alias=True)))
             return result
         elif isinstance(message, str):
-            return [json.loads(components.Plain(text=message).json())]
+            return [json.loads(components.Plain(text=message).json(by_alias=True))]
         else:
             raise raiser(ValueError("invaild message."))
 
@@ -535,9 +535,9 @@ class MiraiProtocol:
             str
         ]):
         if isinstance(message, MessageChain):
-            return json.loads(message.json())
+            return json.loads(message.json(by_alias=True))
         elif isinstance(message, BaseMessageComponent):
-            return [json.loads(message.json())]
+            return [json.loads(message.json(by_alias=True))]
         elif isinstance(message, (tuple, list)):
             result = []
             for i in message:
@@ -552,10 +552,10 @@ class MiraiProtocol:
                         "imageId": i.asFriendImage()
                     })
                 else:
-                    result.append(json.loads(i.json()))
+                    result.append(json.loads(i.json(by_alias=True)))
             return result
         elif isinstance(message, str):
-            return [json.loads(components.Plain(text=message).json())]
+            return [json.loads(components.Plain(text=message).json(by_alias=True))]
         else:
             raise raiser(ValueError("invaild message."))
 
@@ -568,9 +568,9 @@ class MiraiProtocol:
             str
         ]):
         if isinstance(message, MessageChain):
-            return json.loads(message.json())
+            return json.loads(message.json(by_alias=True))
         elif isinstance(message, BaseMessageComponent):
-            return [json.loads(message.json())]
+            return [json.loads(message.json(by_alias=True))]
         elif isinstance(message, (tuple, list)):
             result = []
             for i in message:
@@ -585,10 +585,10 @@ class MiraiProtocol:
                         "imageId": i.asFriendImage()
                     })
                 else:
-                    result.append(json.loads(i.json()))
+                    result.append(json.loads(i.json(by_alias=True)))
             return result
         elif isinstance(message, str):
-            return [json.loads(components.Plain(text=message).json())]
+            return [json.loads(components.Plain(text=message).json(by_alias=True))]
         else:
             raise raiser(ValueError("invaild message."))
 

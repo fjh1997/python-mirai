@@ -176,10 +176,10 @@ class Xml(BaseMessageComponent):
 
 class Json(BaseMessageComponent):
     type: MessageComponentTypes = "Json"
-    Json: dict = Field(..., alias="json")
+    Json: str = Field(..., alias="json")
 
-    def __init__(self, json: dict, **_):
-        super().__init__(Json=json)
+    def __init__(self, json: str, **_):
+        super().__init__(json=json)
 
 class App(BaseMessageComponent):
     type: MessageComponentTypes = "App"
